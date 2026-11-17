@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ProjetoAsilo"
 include(":app")
+include(":qrkit")

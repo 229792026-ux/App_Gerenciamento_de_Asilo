@@ -2,6 +2,7 @@ package com.example.projetoasilo;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,14 +21,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditText edtCodigo = findViewById(R.id.edtCodigo);
+        EditText edtNome = findViewById(R.id.edtNome);
         ImageView imgQr = findViewById(R.id.imgQr);
 
         scannerHelper = new QrScannerHelper(this, conteudo ->
                 Toast.makeText(this, conteudo, Toast.LENGTH_LONG).show());
 
         findViewById(R.id.btnGerar).setOnClickListener(v -> {
+            String codigo = edtCodigo.getText().toString().trim();
+            String nome = edtNome.getText().toString().trim();
+
+            if (codigo.isEmpty()) {
+                Toast.makeText(this, "Digite o código do produto", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             try {
-                Produto produto = new Produto("PROD-001", "Camiseta", 49.90);
+                Produto produto = new Produto(codigo, nome);
                 Bitmap bmp = QrProduto.gerar(produto, 600);
                 imgQr.setImageBitmap(bmp);
             } catch (Exception e) {

@@ -4,12 +4,10 @@ public class Produto {
 
     private final String codigo;
     private final String nome;
-    private final double preco;
 
-    public Produto(String codigo, String nome, double preco) {
+    public Produto(String codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
-        this.preco = preco;
     }
 
     public String getCodigo() {
@@ -18,9 +16,5 @@ public class Produto {
 
     public String getNome() {
         return nome;
-    }
-
-    public double getPreco() {
-        return preco;
     }
 }

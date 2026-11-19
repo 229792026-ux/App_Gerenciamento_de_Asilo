@@ -10,6 +10,10 @@ public class QrScannerHelper {
 
     public interface Listener {
         void aoLerQr(String conteudo);
+
+        // Opcional: chamado quando a pessoa cancela a leitura
+        default void aoCancelar() {
+        }
     }
 
     private final ActivityResultLauncher<ScanOptions> launcher;
@@ -22,6 +26,8 @@ public class QrScannerHelper {
         launcher = activity.registerForActivityResult(new ScanContract(), result -> {
             if (result.getContents() != null) {
                 listener.aoLerQr(result.getContents());
+            } else {
+                listener.aoCancelar();
             }
         });
     }
@@ -31,6 +37,7 @@ public class QrScannerHelper {
         options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
         options.setPrompt("Aponte para o QR code");
         options.setBeepEnabled(false);
+        options.setOrientationLocked(false);
         launcher.launch(options);
     }
 }

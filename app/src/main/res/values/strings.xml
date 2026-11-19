@@ -1,4 +1,8 @@
 <resources>
+    <string name="produto_nao_cadastrado">Produto não cadastrado: %1$s</string>
+    <string name="produto_uso_ok">Uso registrado: %1$s\nQuantidade restante: %2$d</string>
+    <string name="produto_estoque_baixo">Atenção: estoque baixo de %1$s\nQuantidade restante: %2$d (mínimo: %3$d)</string>
+    <string name="produto_sem_estoque">Sem estoque de %1$s</string>
     <string name="app_name">ProjetoAsilo</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
